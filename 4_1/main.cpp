@@ -43,33 +43,25 @@ void parking(Arguments *in, Reply *out)
 
     if (direction == 1) {
         move_us = (d2 + 2) * 1000000 / 6;
-        car.goStraight(20);
+        car.goStraight(-50*d2);
         wait_us(move_us);
-        car.turn(20, 0.1);
+        car.turn(35, 0.1);
         ThisThread::sleep_for(2900ms);
         move_us = (d1 + 4) * 1000000 / 6;
-        car.goStraight(20);
+        car.goStraight(-50*d1);
         wait_us(move_us);
     }
     else if (direction == 2) {
         move_us = (d2 + 2) * 1000000 / 6;
-        car.goStraight(20);
+        car.goStraight(-50*d2);
         wait_us(move_us);
-        car.turn(20, -0.1);
+        car.turn(35, -0.1);
         ThisThread::sleep_for(2900ms);
         move_us = (d1 + 4) * 1000000 / 6;
-        car.goStraight(20);
+        car.goStraight(-50*d1);
         wait_us(move_us);
     }
-    else if (direction == 3) {
-        move_us = (d2 + 2) * 1000000 / 6;
-        car.goStraight(20);
-        wait_us(move_us);
-        ThisThread::sleep_for(2900ms);
-        move_us = (d1 + 4) * 1000000 / 6;
-        car.goStraight(20);
-        wait_us(move_us);
-    }
+    else car.stop();
     car.stop();
     return;
 }
