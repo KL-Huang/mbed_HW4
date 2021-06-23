@@ -10,7 +10,7 @@ BBCar car(pin5, pin6, servo_ticker);
 void parking(Arguments *in, Reply *out);
 RPCFunction rpcparking(&parking, "parking");
 double d1, d2, direction;
-int move_us;
+int time;
 
 int main() {
    
@@ -42,24 +42,24 @@ void parking(Arguments *in, Reply *out)
       direction = in->getArg<double>();
 
     if (direction == 1) {
-        move_us = (d2 + 2) * 1000000 / 6;
+        time = (d2 + 2) * 200000;
         car.goStraight(-50*d2);
-        wait_us(move_us);
+        wait_us(time);
         car.turn(35, 0.1);
-        ThisThread::sleep_for(2900ms);
-        move_us = (d1 + 4) * 1000000 / 6;
+        ThisThread::sleep_for(3000ms);
+        time = (d1 + 4) * 200000;
         car.goStraight(-50*d1);
-        wait_us(move_us);
+        wait_us(time);
     }
     else if (direction == 2) {
-        move_us = (d2 + 2) * 1000000 / 6;
+        time = (d2 + 2) * 200000;
         car.goStraight(-50*d2);
-        wait_us(move_us);
+        wait_us(time);
         car.turn(35, -0.1);
-        ThisThread::sleep_for(2900ms);
-        move_us = (d1 + 4) * 1000000 / 6;
+        ThisThread::sleep_for(3000ms);
+        time = (d1 + 4) * 200000;
         car.goStraight(-50*d1);
-        wait_us(move_us);
+        wait_us(time);
     }
     else car.stop();
     car.stop();

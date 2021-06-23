@@ -5,9 +5,9 @@ import time
 serdev = '/dev/ttyUSB0'
 s = serial.Serial(serdev, 9600)
 
-d1 = float(input("Enter d1: "))
-d2 = float(input("Enter d2: "))
-direction = float(input("Enter direction: "))
+d1 = float(input("d1: "))
+d2 = float(input("d2: "))
+direction = float(input("direction: "))
 print("/parking/run %lf %lf %lf \n\r"%(d1, d2, direction))
 # send RPC to remote
 s.write(("/parking/run %lf %lf %lf \n\r"%(d1, d2, direction)).encode())
